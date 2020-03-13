@@ -1,0 +1,12 @@
+{
+    "name": "vagrant/inst-feed-app",
+    "description": "App that geeting photo from instagram",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Nickolay Ilichev",
+            "email": "spcazaam@yandex.ru"
+        }
+    ],
+    "require": {}
+}
