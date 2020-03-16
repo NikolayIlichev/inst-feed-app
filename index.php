@@ -23,3 +23,19 @@ if (!empty($token))
 	echo "</pre>";
 	
 }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<?php foreach($media->data as $key => $mediaObj): ?>
+		<img src="<?php echo $mediaObj->media_url; ?>" >
+		<?php endforeach; ?>
+	</div>
+</body>
+</html>
