@@ -8,7 +8,7 @@ $redirectUri = 'https://shielded-caverns-80867.herokuapp.com/';
 $clientId = '226153611904886';
 $clientSecret = '8e46c3ef00ba8c01baaf1f33e0cf39fc';
 ?>
-<a href="https://api.instagram.com/oauth/authorize?client_id=<?php echo $clientId; ?>&redirect_uri=<?php echo $redirectUri; ?>&scope=user_profile,user_media&response_type=code"></a>
+<a href="https://api.instagram.com/oauth/authorize?client_id=<?php echo $clientId; ?>&redirect_uri=<?php echo $redirectUri; ?>&scope=user_profile,user_media&response_type=code">Log In</a>
 <?php
 
 // if (!empty($_GET['code'])) {
