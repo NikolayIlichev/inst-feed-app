@@ -8,7 +8,7 @@ ini_set('display_startup_errors', 1);
 $token = 'IGQVJYeXB4WkxDNF9NTEFVaVpheGV5TWlJMUhCTG5NSS1qSnZAJM0dMQlVaM1pGWmp5NEVsMlp1TkQ5NmQ5M2UtNmRSelJ0Vy1mbHZAWVXRUQzhzMVd4MWZAKd05zdXpWX1J3b3V0YmJXZAWdmSlBteTVtaQZDZD';
 
 $instagram_cnct = curl_init(); // инициализация cURL подключения
-curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token={long-lived-access-token}" . $token ); // подключаемся
+curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $token ); // подключаемся
 curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
 curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
 $response = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
@@ -17,6 +17,7 @@ curl_close( $instagram_cnct ); // закрываем соединение
 echo '<pre>';
 print_r($response);
 echo '</pre>';
+
 /*
 echo "It's a new inst-feed-app!";
 
