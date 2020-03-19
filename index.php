@@ -4,19 +4,61 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 // https://shielded-caverns-80867.herokuapp.com/
 // https://git.heroku.com/shielded-caverns-80867.git
+$redirectUri = 'https://shielded-caverns-80867.herokuapp.com/';
+$clientId = '226153611904886';
+$clientSecret = '8e46c3ef00ba8c01baaf1f33e0cf39fc';
+?>
+<a href="https://api.instagram.com/oauth/authorize?client_id=<?php echo $clientId; ?>&redirect_uri=<?php echo $redirectUri; ?>&scope=user_profile,user_media&response_type=code"></a>
+<?php
 
-$token = 'IGQVJXaXU3ZA0xVQzh0a0wwSDBkS1pOOVJnd1R6WjZAzZA2pXNXZAUbEljYlhWa1dSSE9MRDFGUkJhR2R6R1puQkpYTkhZAX1VmN2w3djN1TDMwSjZAJbXh0U1ZAPbGZAvaHl0VFRGdUFsWVh3';
+// if (!empty($_GET['code'])) {
+// 	$code = htmlspecialchars(trim($_GET['code']));
+// 	if( $curl = curl_init() ) {
+// 		$fields = 'client_id=' . $clientId . '&client_secret=' . $clientSecret . '&code=' . $code . '&grant_type=authorization_code&redirect_uri=' . $redirectUri;
+// 	    curl_setopt($curl, CURLOPT_URL, 'https://api.instagram.com/oauth/access_token');
+// 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+// 	    curl_setopt($curl, CURLOPT_POST, true);
+// 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
+// 	    $response = json_decode(curl_exec($curl));
+// 	    curl_close($curl);
+// 	}
+// } elseif (!empty($_GET['error'])) {
+// 	echo "Auth error";
+// }
 
-$instagram_cnct = curl_init(); // инициализация cURL подключения
-curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $token ); // подключаемся
-curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
-curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
-$response = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
-curl_close( $instagram_cnct ); // закрываем соединение
+// if (!empty($response['access_token'])) {
+// 	echo '<pre>';
+// 	print_r($response);
+// 	echo '</pre>';
+// 	if( $curl = curl_init() ) {
+// 		$fields = '?grant_type=ig_exchange_token&client_secret=' . $clientSecret . '&access_token=' . $response['access_token'];
+// 	    curl_setopt($curl, CURLOPT_URL, 'https://graph.instagram.com/access_token');
+// 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+// 	    curl_setopt($curl, CURLOPT_POST, true);
+// 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
+// 	    $response = json_decode(curl_exec($curl));
+// 	    curl_close($curl);
+// 	}
+// }
 
-echo '<pre>';
-print_r($response);
-echo '</pre>';
+// if (!empty($response['access_token'])) {
+// 	echo '<pre>';
+// 	print_r($response);
+// 	echo '</pre>';
+// }
+
+// $token = 'IGQVJXaXU3ZA0xVQzh0a0wwSDBkS1pOOVJnd1R6WjZAzZA2pXNXZAUbEljYlhWa1dSSE9MRDFGUkJhR2R6R1puQkpYTkhZAX1VmN2w3djN1TDMwSjZAJbXh0U1ZAPbGZAvaHl0VFRGdUFsWVh3';
+
+// $instagram_cnct = curl_init(); // инициализация cURL подключения
+// curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $token ); // подключаемся
+// curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
+// curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
+// $response = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
+// curl_close( $instagram_cnct ); // закрываем соединение
+
+// echo '<pre>';
+// print_r($response);
+// echo '</pre>';
 
 /*
 echo "It's a new inst-feed-app!";
