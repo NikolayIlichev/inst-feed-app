@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 // https://shielded-caverns-80867.herokuapp.com/
 // https://git.heroku.com/shielded-caverns-80867.git
 
-$token = 'IGQVJYeXB4WkxDNF9NTEFVaVpheGV5TWlJMUhCTG5NSS1qSnZAJM0dMQlVaM1pGWmp5NEVsMlp1TkQ5NmQ5M2UtNmRSelJ0Vy1mbHZAWVXRUQzhzMVd4MWZAKd05zdXpWX1J3b3V0YmJXZAWdmSlBteTVtaQZDZD';
+$token = 'IGQVJXaXU3ZA0xVQzh0a0wwSDBkS1pOOVJnd1R6WjZAzZA2pXNXZAUbEljYlhWa1dSSE9MRDFGUkJhR2R6R1puQkpYTkhZAX1VmN2w3djN1TDMwSjZAJbXh0U1ZAPbGZAvaHl0VFRGdUFsWVh3';
 
 $instagram_cnct = curl_init(); // инициализация cURL подключения
 curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $token ); // подключаемся
