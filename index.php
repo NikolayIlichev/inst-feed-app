@@ -36,7 +36,7 @@ if (!empty($token))
 
 // new api
 function getInstaFeed() {
-  $accessToken = 'IGQVJXZAzR0ekJzOWNodEFiSG9hQWRtM3Q2ZA1RvTXRIUUY2aHlPLXlBNkl6MUZAFQW9lYzBiQ3FmQ0pVUFdoZAlh5RUdETkQxMDZAiSmozZA1pVdmNKUXRuQ1J4RGdZANVFHV29fbWxOYWhn'; // получаем токен
+  $accessToken = 'IGQVJVYVVfOU45V1ozUzkyUE1xazNRQ09kYi0xckU3SUZAnOG5GcmY3NVJ5ZAS03R2xLemZAjcV96UG1jZA2ZAXem1Gd0h0Yk9CRnRFa1ZA0RzU2T1ctdGZAkbFk2d0JCRGZADWWxwSldjX1JfOFdILUhfV1lpUgZDZD'; // получаем токен
   $tokenDate = '19.05.2020'; // получаем дату создания
   $tokenTimestamp = strtotime($tokenDate);
   $curTimestamp = time();
