@@ -60,8 +60,8 @@ function getInstaFeed() {
 
     // get media data from token owner account
     $instagram_cnct = curl_init(); // инициализация cURL подключения
-    /*curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption,timestamp,thumbnail_url,permalink,children{fields=id,media_url,thumbnail_url,permalink}&limit=50&access_token=" . $accessToken ); // подключаемся*/
-    curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption,timestamp,thumbnail_url,permalink,children&access_token=" . $accessToken );
+    curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption,timestamp,thumbnail_url,permalink,children{fields=id,media_url,thumbnail_url,permalink}&limit=50&access_token=" . $accessToken ); // подключаемся
+    // curl_setopt( $instagram_cnct, CURLOPT_URL, "https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption,timestamp,thumbnail_url,permalink,children&access_token=" . $accessToken );
     curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
     curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
     $media = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
