@@ -1,41 +1,42 @@
 <?php
 
 // old api
-// $token = get_field('access_key', 249);
-// if (!empty($token)) 
-// {
-// 	$user_id = 'self';
-// 	$instagram_cnct = curl_init(); // инициализация cURL подключения
-// 	curl_setopt( $instagram_cnct, CURLOPT_URL, "https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $token ); // подключаемся
-// 	curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
-// 	curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
-// 	$media = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
-// 	curl_close( $instagram_cnct ); // закрываем соединение
+/*
+$token = 'IGQVJVYVVfOU45V1ozUzkyUE1xazNRQ09kYi0xckU3SUZAnOG5GcmY3NVJ5ZAS03R2xLemZAjcV96UG1jZA2ZAXem1Gd0h0Yk9CRnRFa1ZA0RzU2T1ctdGZAkbFk2d0JCRGZADWWxwSldjX1JfOFdILUhfV1lpUgZDZD';
+if (!empty($token)) 
+{
+	$user_id = 'self';
+	$instagram_cnct = curl_init(); // инициализация cURL подключения
+	curl_setopt( $instagram_cnct, CURLOPT_URL, "https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $token ); // подключаемся
+	curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
+	curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
+	$media = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
+	curl_close( $instagram_cnct ); // закрываем соединение
 
-// 	$arImages = array();
-// 	foreach($media->data as $data) {
-// 		if(!empty($insta['tag']))
-// 		{
-// 			if (in_array($insta['tag'], $data->tags)) 
-// 			{			
-// 				$arImages[] = $data->images->low_resolution->url;
-// 			}
-// 		}
-// 		elseif($data->type == 'image')
-// 		{
-// 			$arImages[] = $data->images->low_resolution->url;
-// 		}
-// 		if (count($arImages) == 12) 
-// 		{
-// 			break;
-// 		}
-// 	}
-// }
-
+	$arImages = array();
+	foreach($media->data as $data) {
+		if(!empty($insta['tag']))
+		{
+			if (in_array($insta['tag'], $data->tags)) 
+			{			
+				$arImages[] = $data->images->low_resolution->url;
+			}
+		}
+		elseif($data->type == 'image')
+		{
+			$arImages[] = $data->images->low_resolution->url;
+		}
+		if (count($arImages) == 12) 
+		{
+			break;
+		}
+	}
+}
+*/
 
 // new api
 function getInstaFeed() {
-  $accessToken = 'IGQVJVYVVfOU45V1ozUzkyUE1xazNRQ09kYi0xckU3SUZAnOG5GcmY3NVJ5ZAS03R2xLemZAjcV96UG1jZA2ZAXem1Gd0h0Yk9CRnRFa1ZA0RzU2T1ctdGZAkbFk2d0JCRGZADWWxwSldjX1JfOFdILUhfV1lpUgZDZD'; // получаем токен
+  $accessToken = 'IGQVJXZAzR0ekJzOWNodEFiSG9hQWRtM3Q2ZA1RvTXRIUUY2aHlPLXlBNkl6MUZAFQW9lYzBiQ3FmQ0pVUFdoZAlh5RUdETkQxMDZAiSmozZA1pVdmNKUXRuQ1J4RGdZANVFHV29fbWxOYWhn'; // получаем токен
   $tokenDate = '19.05.2020'; // получаем дату создания
   $tokenTimestamp = strtotime($tokenDate);
   $curTimestamp = time();
