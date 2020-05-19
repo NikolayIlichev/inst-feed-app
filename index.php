@@ -1,36 +1,36 @@
 <?php
 
 // old api
-$token = get_field('access_key', 249);
-if (!empty($token)) 
-{
-	$user_id = 'self';
-	$instagram_cnct = curl_init(); // инициализация cURL подключения
-	curl_setopt( $instagram_cnct, CURLOPT_URL, "https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $token ); // подключаемся
-	curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
-	curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
-	$media = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
-	curl_close( $instagram_cnct ); // закрываем соединение
+// $token = get_field('access_key', 249);
+// if (!empty($token)) 
+// {
+// 	$user_id = 'self';
+// 	$instagram_cnct = curl_init(); // инициализация cURL подключения
+// 	curl_setopt( $instagram_cnct, CURLOPT_URL, "https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $token ); // подключаемся
+// 	curl_setopt( $instagram_cnct, CURLOPT_RETURNTRANSFER, 1 ); // просим вернуть результат
+// 	curl_setopt( $instagram_cnct, CURLOPT_TIMEOUT, 15 );
+// 	$media = json_decode( curl_exec( $instagram_cnct ) ); // получаем и декодируем данные из JSON
+// 	curl_close( $instagram_cnct ); // закрываем соединение
 
-	$arImages = array();
-	foreach($media->data as $data) {
-		if(!empty($insta['tag']))
-		{
-			if (in_array($insta['tag'], $data->tags)) 
-			{			
-				$arImages[] = $data->images->low_resolution->url;
-			}
-		}
-		elseif($data->type == 'image')
-		{
-			$arImages[] = $data->images->low_resolution->url;
-		}
-		if (count($arImages) == 12) 
-		{
-			break;
-		}
-	}
-}
+// 	$arImages = array();
+// 	foreach($media->data as $data) {
+// 		if(!empty($insta['tag']))
+// 		{
+// 			if (in_array($insta['tag'], $data->tags)) 
+// 			{			
+// 				$arImages[] = $data->images->low_resolution->url;
+// 			}
+// 		}
+// 		elseif($data->type == 'image')
+// 		{
+// 			$arImages[] = $data->images->low_resolution->url;
+// 		}
+// 		if (count($arImages) == 12) 
+// 		{
+// 			break;
+// 		}
+// 	}
+// }
 
 
 // new api
