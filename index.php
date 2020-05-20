@@ -70,7 +70,7 @@ if (!empty($accessToken)) {
   <?php foreach($instaFeed as $key => $post): ?>
 
       <?php if ($post['media_type'] === 'VIDEO'): ?>
-      <video autoplay="autoplay" muted="muted" class="insta_post">
+      <video autoplay muted loop controls class="insta_post">
        <source src="<?php echo $post['src']; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
         Видео не поддерживается
         <a href="<?php echo $post['link']; ?>"><img src="<?php echo $post['preview']; ?>" class="insta_post"> </a>
