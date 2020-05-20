@@ -66,12 +66,12 @@ if (!empty($accessToken)) {
 
       <?php if ($post['media_type'] === 'VIDEO'): ?>
       <video>
-       <source src="<?php $post['src']; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+       <source src="<?php echo $post['src']; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
         Видео не поддерживается
-        <a href="<?php $post['link']; ?>"><img src="<?php $post['preview']; ?>"> </a>
+        <a href="<?php echo $post['link']; ?>"><img src="<?php echo $post['preview']; ?>"> </a>
       </video>
       <?php else: ?>
-      <a href="<?php $post['link']; ?>"><img src="<?php $post['src']; ?>"> </a>
+      <a href="<?php echo $post['link']; ?>"><img src="<?php echo $post['src']; ?>"> </a>
       <?php endif; ?>
    
   <?php endforeach; ?>
