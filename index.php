@@ -1,8 +1,8 @@
 <?php
 
 // new api
-$accessToken = 'token'; // получаем токен
-$tokenDate = 'date'; // получаем дату создания
+$accessToken = 'IGQVJVM3NjbHloOW0xWEJQajdjMlR5VkxVWWE0NW16bnZAKS0kwcE5uTlJyczlzUDB6b0NUNlRFVm5xNEFfWjhnelhiS2tsMDljZAzlIcHdKNDY3SFEta3BGd2lPSlF0NkdoTEc1eHVHenl3QnYzbVgyNgZDZD'; // получаем токен
+$tokenDate = '19.05.2020'; // получаем дату создания
 $tokenTimestamp = strtotime($tokenDate);
 $curTimestamp = time();
 $dayDiff = ($curTimestamp - $tokenTimestamp) / 86400;
@@ -34,12 +34,42 @@ if (!empty($accessToken)) {
   foreach ($media->data as $mediaObj) {
     if (!empty($mediaObj->children)) {
       foreach ($mediaObj->children->data as $children) {
-        $instaFeed[$children->id]['img'] = $children->thumbnail_url ?: $children->media_url;
+        $instaFeed[$children->id]['src'] = $children->media_url;
+        $instaFeed[$children->id]['preview'] = $children->thumbnail_url;
         $instaFeed[$children->id]['link'] = $children->permalink;
+        $instaFeed[$children->id]['media_type'] = $children->media_type;
       }
     } else {
-      $instaFeed[$mediaObj->id]['img'] = $mediaObj->thumbnail_url ?: $mediaObj->media_url;
+      $instaFeed[$mediaObj->id]['src'] = $mediaObj->media_url;
+      $instaFeed[$mediaObj->id]['preview'] = $mediaObj->thumbnail_url;
       $instaFeed[$mediaObj->id]['link'] = $mediaObj->permalink;
+      $instaFeed[$mediaObj->id]['media_type'] = $mediaObj->media_type;
     }
   }
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <?php foreach($instaFeed as $key => $post): ?>
+
+      <?php if ($post['media_type'] === 'VIDEO'): ?>
+      <video>
+       <source src="<?php $post['src']; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        Видео не поддерживается
+        <a href="<?php $post['link']; ?>"><img src="<?php $post['preview']; ?>"> </a>
+      </video>
+      <?php else: ?>
+      <a href="<?php $post['link']; ?>"><img src="<?php $post['src']; ?>"> </a>
+      <?php endif; ?>
+   
+  <?php endforeach; ?>
+
+</body>
+</html>
