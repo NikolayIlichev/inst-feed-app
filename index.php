@@ -1,8 +1,8 @@
 <?php
 
 // new api
-$accessToken = 'IGQVJVM3NjbHloOW0xWEJQajdjMlR5VkxVWWE0NW16bnZAKS0kwcE5uTlJyczlzUDB6b0NUNlRFVm5xNEFfWjhnelhiS2tsMDljZAzlIcHdKNDY3SFEta3BGd2lPSlF0NkdoTEc1eHVHenl3QnYzbVgyNgZDZD'; // получаем токен
-$tokenDate = '19.05.2020'; // получаем дату создания
+$accessToken = 'token'; // получаем токен
+$tokenDate = 'date'; // получаем дату создания
 $tokenTimestamp = strtotime($tokenDate);
 $curTimestamp = time();
 $dayDiff = ($curTimestamp - $tokenTimestamp) / 86400;
@@ -14,7 +14,7 @@ if (!empty($accessToken)) {
     $url = "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $accessToken;
     curl_setopt($instagram_cnct, CURLOPT_URL, $url);
     curl_setopt($instagram_cnct, CURLOPT_RETURNTRANSFER, 1);
-    $response = json_decode(curl_exec($instagram_cnct ));
+    $response = json_decode(curl_exec($instagram_cnct));
     curl_close($instagram_cnct);
 
     // обновляем токен и дату его создания в базе
