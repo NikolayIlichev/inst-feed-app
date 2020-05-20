@@ -29,9 +29,7 @@ if (!empty($accessToken)) {
   curl_setopt($instagram_cnct, CURLOPT_RETURNTRANSFER, 1);
   $media = json_decode(curl_exec($instagram_cnct));
   curl_close($instagram_cnct);
-  echo "<pre>";
-  print_r($media);
-  echo "</pre>";
+
   $instaFeed = array();
   foreach ($media->data as $mediaObj) {
     if (!empty($mediaObj->children)) {
@@ -48,9 +46,7 @@ if (!empty($accessToken)) {
       $instaFeed[$mediaObj->id]['media_type'] = $mediaObj->media_type;
     }
   }
-  echo "<pre style='display: none'>";
-  print_r($instaFeed);
-  echo "</pre>";
+
 }
 ?>
 
