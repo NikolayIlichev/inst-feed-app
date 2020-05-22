@@ -8,27 +8,24 @@ $curTimestamp = time();
 $dayDiff = ($curTimestamp - $tokenTimestamp) / 86400;
 
 if (!empty($accessToken)) {
-
-  // Refresh a long-lived Instagram User Access Token that is at least 24 hours old but has not expired. Refreshed tokens are valid for 60 days from the date at which they are refreshed.
   if ($dayDiff > 50) {
     $url = "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $accessToken;
-    curl_setopt($instagram_cnct, CURLOPT_URL, $url);
-    curl_setopt($instagram_cnct, CURLOPT_RETURNTRANSFER, 1);
-    $response = json_decode(curl_exec($instagram_cnct));
-    curl_close($instagram_cnct);
+    curl_setopt($instagramCnct, CURLOPT_URL, $url);
+    curl_setopt($instagramCnct, CURLOPT_RETURNTRANSFER, 1);
+    $response = json_decode(curl_exec($instagramCnct));
+    curl_close($instagramCnct);
 
     // обновляем токен и дату его создания в базе
 
     $accessToken = $response->access_token; // обновленный токен
   }
 
-  // Get media data from token owner account
   $url = "https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption,timestamp,thumbnail_url,permalink,children{fields=id,media_url,thumbnail_url,permalink}&limit=50&access_token=" . $accessToken;
-  $instagram_cnct = curl_init();
-  curl_setopt($instagram_cnct, CURLOPT_URL, $url);
-  curl_setopt($instagram_cnct, CURLOPT_RETURNTRANSFER, 1);
-  $media = json_decode(curl_exec($instagram_cnct));
-  curl_close($instagram_cnct);
+  $instagramCnct = curl_init();
+  curl_setopt($instagramCnct, CURLOPT_URL, $url);
+  curl_setopt($instagramCnct, CURLOPT_RETURNTRANSFER, 1);
+  $media = json_decode(curl_exec($instagramCnct));
+  curl_close($instagramCnct);
 
   $instaFeed = array();
   foreach ($media->data as $mediaObj) {
