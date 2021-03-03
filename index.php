@@ -10,6 +10,7 @@ $dayDiff = ($curTimestamp - $tokenTimestamp) / 86400;
 if (!empty($accessToken)) {
   if ($dayDiff > 50) {
     $url = "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . $accessToken;
+    $instagramCnct = curl_init();
     curl_setopt($instagramCnct, CURLOPT_URL, $url);
     curl_setopt($instagramCnct, CURLOPT_RETURNTRANSFER, 1);
     $response = json_decode(curl_exec($instagramCnct));
